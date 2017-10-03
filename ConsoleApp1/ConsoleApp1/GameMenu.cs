@@ -7,6 +7,41 @@ namespace spil
         TicTacToe ticTacToe { get; set; }
         int turns = 0; //variable til at tælle ture
 
+        public void MainMenu()
+        {
+            bool running = true; // køre i et bool while loop så længe at bool er true
+            do
+            {
+                try
+                {
+                    Console.Clear();
+                    Console.WriteLine("Chose a game");
+                    Console.WriteLine("1. Tic tac toe");
+                    Console.WriteLine("2. Battleship");
+                    Console.WriteLine("");
+                    Console.WriteLine("0. Exit");
+                    string choice = GetUserChoice();
+                    switch (choice) //switch til at køre det valgte spil
+                    {
+                        case "1":
+                            MainMenuTicTacToe(); break;
+                        case "2":
+                            BattleshipsMenu(); break;
+                        case "0":
+                            running = false; break;
+                        default:
+                            ShowMenuSelectionError(); break;
+                    }
+                }
+                catch
+                {
+                    ShowMenuSelectionError();
+                }
+            } while (running);
+    
+           
+        }
+
         public void BattleshipsMenu()
         {
             
