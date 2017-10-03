@@ -17,7 +17,7 @@ namespace spil
         private void Run()
         {
             GameMenu ticTacToeMenu = new GameMenu();
-            ticTacToeMenu.MainMenuTicTacToe(); // kalder hovedmenuen
+            ticTacToeMenu.BattleshipsMenu(); // kalder hovedmenuen
         }
     }
 }

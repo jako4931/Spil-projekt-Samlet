@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    struct shipsLeft
-    {
-        public int hangarskibe = 1;
-        public int slagskibe = 2;
-        public int destroyers = 2;
-        public int ubaade = 1;
-        public int patruljebaade = 3;
-    }
+//    struct shipsLeft
+  //  {
+    //    public int hangarskibe;
+      //  public int slagskibe;
+  //      public int destroyers;
+      //  public int ubaade;
+    //    public int patruljebaade;
+   // }
 
     class Battleships
     {

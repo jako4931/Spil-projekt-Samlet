@@ -15,7 +15,7 @@ namespace spil
             {
             Console.Clear();
             Console.WriteLine("Battle Ships Menu \n");
-            Console.WriteLine("1. Start new game \n 0. Exit ");
+            Console.WriteLine("1. Start new game \n0. Exit ");
                 try 
                 {
 
@@ -24,7 +24,7 @@ namespace spil
                 {
                     case "1": break;
                     case "0": running = false; break;
-                    default: ShowMenuSelectionError();
+                    default: ShowMenuSelectionError(); break;
                 }
                 
                 }
