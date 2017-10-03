@@ -8,16 +8,39 @@ namespace ConsoleApp1
 {
     class Battleships
     {
-        public string GameBoard()
+        public char[,] GameBoard { get; set; }
+        public Battleships()
         {
-            string board;
-
-
-
-
-
-
-            return board;
+            GameBoard = new char[10, 10] { }
+        }
+        public string GetGameBoardView()
+        {
+            string board = "";
+            board += "\n";
+            board += "\n";
+            board += "\n";
+            board += "\n";
+            board += "\n";
+            board += "\n";
+            board += "\n";
+            board += "\n";
+            board += "\n";
+            board += "\n";
+            board += "\n";
+            board += "\n";
+            board += "\n";
+            board += "\n";
+            board += "\n";
+            board += "\n";
+            board += "\n";
+            board += "\n";
+            board += "\n";
+            board += "\n";
+            board += "\n";
+            board += "\n";
+            board += "\n";
+            board += "\n";
+            ½return board;
         }
 
 
