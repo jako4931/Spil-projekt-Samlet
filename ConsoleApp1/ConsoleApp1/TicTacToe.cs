@@ -11,7 +11,7 @@ namespace spil
             GameBoard = new char[10] { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', };
         }
         public int player1 = 0; // variable for player som vi bruger til at skifte mellem spillere
-        public char currentplayer = 'p'; // char til at difinere current spillers tegn (X/O)
+        public char currentplayer = 'h'; // char til at difinere current spillers tegn (X/O)
         public string GetGameBoardView() // metode for at print brættet 
         {
             string resultat = "";
