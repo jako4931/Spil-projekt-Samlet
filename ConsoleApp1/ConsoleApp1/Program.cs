@@ -17,7 +17,7 @@ namespace spil
         private void Run()
         {
             TicTacToeMenu ticTacToeMenu = new TicTacToeMenu();
-            ticTacToeMenu.MainMenu(); // kalder hovedmenuen
+            ticTacToeMenu.MainMenuTicTacToe(); // kalder hovedmenuen
         }
     }
 }

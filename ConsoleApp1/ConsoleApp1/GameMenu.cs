@@ -6,7 +6,7 @@ namespace spil
     {
         TicTacToe ticTacToe { get; set; }
         int turns = 0; //variable til at tælle ture
-        public void MainMenu()
+        public void MainMenuTicTacToe()
         {
             bool running = true; // køre i et bool while loop så længe at bool er true
             do
