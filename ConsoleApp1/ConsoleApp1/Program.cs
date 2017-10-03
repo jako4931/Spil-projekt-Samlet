@@ -4,12 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace spil
 {
     class Program
     {
         static void Main(string[] args)
         {
+            Program myProgram = new Program();
+            myProgram.Run();
         }
-    } //hej med dig
+
+        private void Run()
+        {
+            TicTacToeMenu ticTacToeMenu = new TicTacToeMenu();
+            ticTacToeMenu.MainMenu(); // kalder hovedmenuen
+        }
+    }
 }
