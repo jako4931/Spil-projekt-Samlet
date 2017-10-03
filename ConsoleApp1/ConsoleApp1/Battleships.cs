@@ -6,6 +6,15 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
+    struct shipsLeft
+    {
+        public int hangarskibe = 1;
+        public int slagskibe = 2;
+        public int destroyers = 2;
+        public int ubaade = 1;
+        public int patruljebaade = 3;
+    }
+
     class Battleships
     {
         public char[,] GameBoard { get; set; }
@@ -43,7 +52,9 @@ namespace ConsoleApp1
             return board;
         }
 
+       
 
+       
 
     }
 }
