@@ -8,6 +8,19 @@ namespace ConsoleApp1
 {
     class Battleships
     {
+        public string GameBoard()
+        {
+            string board;
+
+
+
+
+
+
+            return board;
+        }
+
+
 
     }
 }
