@@ -7,6 +7,37 @@ namespace spil
         TicTacToe ticTacToe { get; set; }
         int turns = 0; //variable til at tælle ture
 
+        public void BattleshipsMenu()
+        {
+            
+            bool running = true;
+            do
+            {
+            Console.Clear();
+            Console.WriteLine("Battle Ships Menu \n");
+            Console.WriteLine("1. Start new game \n 0. Exit ");
+                try 
+                {
+
+                string choice = GetUserChoice();
+                switch (choice)
+                {
+                    case "1": break;
+                    case "0": running = false; break;
+                    default: ShowMenuSelectionError();
+                }
+                
+                }
+                catch
+                {
+                    ShowMenuSelectionError();
+                }
+
+            }while (running);
+
+        }
+ 
+            
         public void MainMenuTicTacToe()
         {
             bool running = true; // køre i et bool while loop så længe at bool er true
