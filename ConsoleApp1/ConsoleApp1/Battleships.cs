@@ -11,7 +11,7 @@ namespace ConsoleApp1
         public char[,] GameBoard { get; set; }
         public Battleships()
         {
-            GameBoard = new char[10, 10] { }
+            GameBoard = new char[10, 10];
         }
         public string GetGameBoardView()
         {
@@ -40,7 +40,7 @@ namespace ConsoleApp1
             board += "\n";
             board += "\n";
             board += "\n";
-            ½return board;
+            return board;
         }
 
 
