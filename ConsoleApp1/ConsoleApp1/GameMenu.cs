@@ -2,7 +2,7 @@
 
 namespace spil
 {
-    public class TicTacToeMenu
+    public class GameMenu
     {
         TicTacToe ticTacToe { get; set; }
         int turns = 0; //variable til at tælle ture
