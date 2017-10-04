@@ -13,7 +13,7 @@ namespace spil
             Program myProgram = new Program();
             myProgram.Run();
         }
-
+        
         private void Run()
         {
             GameMenu TheMenu = new GameMenu();

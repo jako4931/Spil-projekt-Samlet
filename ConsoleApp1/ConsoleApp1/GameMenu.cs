@@ -88,17 +88,13 @@ namespace spil
                     Console.WriteLine("");
 
                     Console.WriteLine("0. Exit");
-                    int choice = int.Parse(GetUserChoice());
+                    string choice = GetUserChoice();
                     switch (choice) //switch til at køre det valgte spil
                     {
-                        case 1:
-                            ShowStandard(); break;
-                        case 2:
-                            ShowVariation(); break;
-                        case 0:
-                            running = false; break;
-                        default:
-                            ShowMenuSelectionError(); break;
+                        case "1": ShowStandard(); break;
+                        case "2": ShowVariation(); break;
+                        case "0": running = false; break;
+                        default: ShowMenuSelectionError(); break;
                     }
                 }
                 catch
@@ -117,13 +113,13 @@ namespace spil
                 {
                     Console.Clear();
                     ShowMenuVariation();
-                    int choice = int.Parse(GetUserChoice());
+                    string choice = GetUserChoice();
                     switch (choice) // gøre det samme bare med menu i spiltypen variation
                     {
-                        case 1: DoActionFor1(); break;
-                        case 2: DoActionFor2(); break;
-                        case 3: DoActionFor3(); break;
-                        case 0: running = false; break;
+                        case "1": DoActionFor1(); break;
+                        case "2": DoActionFor2(); break;
+                        case "3": DoActionFor3(); break;
+                        case "0": running = false; break;
                         default: ShowMenuSelectionError(); break;
                     }
                     ticTacToe.Validate();
@@ -146,12 +142,12 @@ namespace spil
                 {
                     Console.Clear();
                     ShowMenuStandard();
-                    int choice = int.Parse(GetUserChoice());
+                    string choice = GetUserChoice();
                     switch (choice) // gør det samme bare med standard spillet
                     {
-                        case 0: running = false; break;
-                        case 1: DoActionFor1(); break;
-                        case 2: DoActionFor2(); break;
+                        case "0": running = false; break;
+                        case "1": DoActionFor1(); break;
+                        case "2": DoActionFor2(); break;
                         default: ShowMenuSelectionError(); break;
                     }
                     ticTacToe.Validate();
@@ -253,9 +249,6 @@ namespace spil
             {
                 ShowMenuSelectionError();
             }
-
-
-
         }
     }
 }

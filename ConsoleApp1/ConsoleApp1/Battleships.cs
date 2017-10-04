@@ -51,10 +51,5 @@ namespace ConsoleApp1
             board += "\n";
             return board;
         }
-
-       
-
-       
-
     }
 }
