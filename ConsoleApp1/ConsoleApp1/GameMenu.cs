@@ -44,20 +44,30 @@ namespace spil
 
         public void BattleshipsMenu()
         {
+            Battleships battleships = new Battleships();
+            
             
             bool running = true;
             do
             {
-            Console.Clear();
+            
             Console.WriteLine("Battle Ships Menu \n");
-            Console.WriteLine("1. Start new game \n0. Exit ");
+            Console.WriteLine("1. Start new game \n2. Deploy ship. \n0. Exit ");
                 try 
                 {
 
                 string choice = GetUserChoice();
                 switch (choice)
                 {
-                    case "1": break;
+                    case "1":
+                        //Battleships battleships = new Battleships();
+                        Console.WriteLine(battleships.GetBoardView());
+                        break;
+                    case "2": 
+                        battleships.DeployShip();
+                        Console.WriteLine(battleships.GetBoardView());
+                        break;
+                        
                     case "0": running = false; break;
                     default: ShowMenuSelectionError(); break;
                 }
@@ -250,5 +260,48 @@ namespace spil
                 ShowMenuSelectionError();
             }
         }
+        public int SelectShipMenu()
+    {
+        Console.WriteLine("Selected a ship to deploy\n");
+        Console.WriteLine("1. Aircraft carrier \n2. Battleship \n3. Destroyer \n4. Submarine \n5. Rambo");
+        string choice = GetUserChoice();
+
+        switch (choice)
+            {
+                case "1": return 5; 
+                case "2": return 4; 
+                case "3": return 3;
+                case "4": return 3; 
+                case "5": return 2; 
+                default: return 0; break;
+            }
+        
     }
+        public int ShipLocationX()
+        {
+            Console.WriteLine("Fra hvilket felt skal dit skib gå?\n");
+            Console.WriteLine("Indtast x-værdi: ");
+            int xValue = int.Parse(Console.ReadLine());
+            return xValue;
+        }
+        public int ShipLocationY()
+        {
+            Console.WriteLine("Indtast y-værdi: ");
+            char yValue = Convert.ToChar(Console.ReadLine());
+            return yValue;
+        }
+        public bool Horizontal()
+        {
+            Console.WriteLine("Skal skkibet placeres lodret eller vanret");
+            Console.WriteLine("1. Vandret \n2. Lodret");
+            string choice = GetUserChoice();
+            switch (choice)
+            {
+                case "1": return true; break;
+                case "2": return false; break;
+                default: return false; break;
+            }
+
+        }
+}
 }

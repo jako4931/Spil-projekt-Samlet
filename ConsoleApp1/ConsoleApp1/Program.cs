@@ -17,7 +17,7 @@ namespace spil
         private void Run()
         {
             GameMenu TheMenu = new GameMenu();
-            TheMenu.MainMenu(); // kalder hovedmenuen
+            TheMenu.MainMenu();
         }
     }
 }
