@@ -5,7 +5,7 @@ namespace spil
     public class GameMenu
     {
         TicTacToe ticTacToe { get; set; }
-        Battleships battleships { get; set; }
+
         int turns = 0; //variable til at tælle ture
 
         public void MainMenu()
@@ -27,7 +27,8 @@ namespace spil
                         case "1":
                             MainMenuTicTacToe(); break;
                         case "2":
-                            BattleshipsMenu(); break;
+                            BattleShipsMenu bsm = new BattleShipsMenu();
+                             bsm.BattleshipsMenu(); break;
                         case "0":
                             running = false; break;
                         default:
@@ -43,34 +44,7 @@ namespace spil
            
         }
 
-        public void BattleshipsMenu()
-        {
-            bool running = true;
-            do
-            {   
-            Console.WriteLine("Battle Ships Menu \n");
-            Console.WriteLine("1. Start new game \n2. Deploy ship. \n0. Exit ");
-                 
-                
-                string choice = GetUserChoice();
-                switch (choice)
-                {
-                    case "1":
-                        battleships = new Battleships();
-                        Console.WriteLine(battleships.GetBoardView());
-                        break;
-                    case "2": 
-                        DeployMenu();
-                        Console.WriteLine(battleships.GetBoardView());
-                        break;
-                    case "0": running = false; break;
-                    default: ShowMenuSelectionError(); break;
-                }
-            }while (running);
-
-        }
- 
-            
+       
         public void MainMenuTicTacToe()
         {
             bool running = true; // køre i et bool while loop så længe at bool er true
@@ -197,14 +171,14 @@ namespace spil
             Console.WriteLine("0. Exit");
         }
 
-        private string GetUserChoice()//kaldes for at få input fra user
+        protected string GetUserChoice()//kaldes for at få input fra user
         {
             Console.WriteLine();
             Console.Write("Indtast dit valg: ");
             return Console.ReadLine();
         }
 
-        private void ShowMenuSelectionError()
+        protected void ShowMenuSelectionError()
         {
             turns--; //der ikke bliver sat en brik skal turnes ikke plusses med en så derfor minuser vi med 1 her
             Console.WriteLine("Ugyldigt valg.");
@@ -248,40 +222,6 @@ namespace spil
                 ShowMenuSelectionError();
             }
         }
-        public void DeployMenu()
-    {
-        Console.WriteLine("Selected a ship to deploy\n");
-        Console.WriteLine("1. Aircraft carrier \n2. Battleship \n3. Destroyer \n4. Submarine \n5. Rambo");
-        int shipLength = 0;
-        string choice = GetUserChoice();
-
-        switch (choice)
-            {
-                case "1": shipLength = 5; break;
-                case "2": shipLength = 4; break;
-                case "3": shipLength = 3; break;
-                case "4": shipLength = 3; break;
-                case "5": shipLength = 2; break;
-                default: ShowMenuSelectionError(); break;
-             } 
-        Console.WriteLine("Fra hvilket felt skal dit skib gå?\n");
-        Console.WriteLine("x-værdi: ");
-        int xValue = int.Parse(Console.ReadLine());
-        Console.WriteLine("Indtast y-værdi: ");
-        int yValue = int.Parse(Console.ReadLine());
- 
-        Console.WriteLine("Skal skkibet placeres lodret eller vanret");
-        Console.WriteLine("1. Vandret \n2. Lodret");
-       bool horizontal = true;
-        choice = GetUserChoice();
-            switch (choice)
-            {
-                case "1": horizontal = true; break;
-                case "2": horizontal = false; break;
-                default: ShowMenuSelectionError(); break;
-            }
-        battleships.DeployShip(shipLength, xValue, yValue, horizontal);
-
-        }
+      
 }
 }

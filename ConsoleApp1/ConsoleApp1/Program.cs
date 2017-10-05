@@ -12,6 +12,8 @@ namespace spil
         {
             Program myProgram = new Program();
             myProgram.Run();
+
+            
         }
         
         private void Run()
