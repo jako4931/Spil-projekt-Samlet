@@ -43,14 +43,14 @@ namespace spil
         public string GetBoardView()
         {
             string resultat = "";
-                                                                                                                                                                                                                                           //
+            //
             resultat = resultat + "  -----------------------------------------" + "   |   -----------------------------------------\n";
             resultat = resultat + "10" + "|" + B1[0, 9] + "  |" + B1[1, 9] + "  |" + B1[2, 9] + "  |" + B1[3, 9] + "  |" + B1[4, 9] + "  |" + B1[5, 9] + "  |" + B1[6, 9] + "  |" + B1[7, 9] + "  |" + B1[8, 9] + "  |" + B1[9, 9] + "  |" + "   | 10|" + B2[0, 9] + "  |" + B2[1, 9] + "  |" + B2[2, 9] + "  |" + B2[3, 9] + "  |" + B2[4, 9] + "  |" + B2[5, 9] + "  |" + B2[6, 9] + "  |" + B2[7, 9] + "  |" + B2[8, 9] + "  |" + B2[9, 9] + "  |\n";
-            resultat = resultat + "  -----------------------------------------" + "   |   -----------------------------------------\n"; 
+            resultat = resultat + "  -----------------------------------------" + "   |   -----------------------------------------\n";
             resultat = resultat + "9 " + "|" + B1[0, 8] + "  |" + B1[1, 8] + "  |" + B1[2, 8] + "  |" + B1[3, 8] + "  |" + B1[4, 8] + "  |" + B1[5, 8] + "  |" + B1[6, 8] + "  |" + B1[7, 8] + "  |" + B1[8, 8] + "  |" + B1[9, 8] + "  |" + "   |  9|" + B2[0, 8] + "  |" + B2[1, 8] + "  |" + B2[2, 8] + "  |" + B2[3, 8] + "  |" + B2[4, 8] + "  |" + B2[5, 8] + "  |" + B2[6, 8] + "  |" + B2[7, 8] + "  |" + B2[8, 8] + "  |" + B2[9, 8] + "  |\n";
-            resultat = resultat + "  -----------------------------------------" + "   |   -----------------------------------------\n"; 
+            resultat = resultat + "  -----------------------------------------" + "   |   -----------------------------------------\n";
             resultat = resultat + "8 " + "|" + B1[0, 7] + "  |" + B1[1, 7] + "  |" + B1[2, 7] + "  |" + B1[3, 7] + "  |" + B1[4, 7] + "  |" + B1[5, 7] + "  |" + B1[6, 7] + "  |" + B1[7, 7] + "  |" + B1[8, 7] + "  |" + B1[9, 7] + "  |" + "   |  8|" + B2[0, 7] + "  |" + B2[1, 7] + "  |" + B2[2, 7] + "  |" + B2[3, 7] + "  |" + B2[4, 7] + "  |" + B2[5, 7] + "  |" + B2[6, 7] + "  |" + B2[7, 7] + "  |" + B2[8, 7] + "  |" + B2[9, 7] + "  |\n";
-            resultat = resultat + "  -----------------------------------------" + "   |   -----------------------------------------\n"; 
+            resultat = resultat + "  -----------------------------------------" + "   |   -----------------------------------------\n";
             resultat = resultat + "7 " + "|" + B1[0, 6] + "  |" + B1[1, 6] + "  |" + B1[2, 6] + "  |" + B1[3, 6] + "  |" + B1[4, 6] + "  |" + B1[5, 6] + "  |" + B1[6, 6] + "  |" + B1[7, 6] + "  |" + B1[8, 6] + "  |" + B1[9, 6] + "  |" + "   |  7|" + B2[0, 6] + "  |" + B2[1, 6] + "  |" + B2[2, 6] + "  |" + B2[3, 6] + "  |" + B2[4, 6] + "  |" + B2[5, 6] + "  |" + B2[6, 6] + "  |" + B2[7, 6] + "  |" + B2[8, 6] + "  |" + B2[9, 6] + "  |\n";
             resultat = resultat + "  -----------------------------------------" + "   |   -----------------------------------------\n";
             resultat = resultat + "6 " + "|" + B1[0, 5] + "  |" + B1[1, 5] + "  |" + B1[2, 5] + "  |" + B1[3, 5] + "  |" + B1[4, 5] + "  |" + B1[5, 5] + "  |" + B1[6, 5] + "  |" + B1[7, 5] + "  |" + B1[8, 5] + "  |" + B1[9, 5] + "  |" + "   |  6|" + B2[0, 5] + "  |" + B2[1, 5] + "  |" + B2[2, 5] + "  |" + B2[3, 5] + "  |" + B2[4, 5] + "  |" + B2[5, 5] + "  |" + B2[6, 5] + "  |" + B2[7, 5] + "  |" + B2[8, 5] + "  |" + B2[9, 5] + "  |\n";
@@ -71,29 +71,70 @@ namespace spil
             return resultat;
 
         }
-        
-    public void DeployShip(int shipLength, int startX, int startY, bool direction)
-    {
-        startX--;
-        startY--;
-        if (direction == false)
-    {
-
-        for (int i = 0; i < shipLength; i++)
-			{
-                B1[startX, startY + i] = 'X';
-			}
-    }
-        else
+        public void Error()
         {
-            for (int i = 0; i < shipLength; i++)
-			{
-                 B1[startX + i, startY] = 'X';
-			}
+            Console.Clear();
+            Console.WriteLine("Nix!");
+            Console.ReadKey();
         }
-			  
+
+        public void DeployShip(int shipLength, int startX, int startY, bool direction)
+        {
+            startX--;
+            startY--;
+            bool fieldsOccupied = false;
+            switch (direction)
+            {
+                case true: // vandret tjek og placering
+                    for (int i = 0; i < shipLength; i++)
+                        {
+                            if (Char.IsLetter(B1[startX + i, startY]))
+                            {
+                                fieldsOccupied = true;
+                            }
+                            else{}
+                         
+                        }
+                    if (fieldsOccupied == true)
+                         {
+                            Error();
+                         }
+                    else
+                         {
+                            for (int i = 0; i < shipLength; i++)
+                                {
+                                    B1[startX + i, startY] = 'X';
+                                }
+                         }
+                    break;
+                case false: //lodret tjek og placering
+                    for (int i = 0; i < shipLength; i++)
+                        {
+                            if (Char.IsLetter(B1[startX, startY + i]))
+                                {
+                                    fieldsOccupied = true;
+                                }
+                             else { }
+                        }
+                    if (fieldsOccupied == true)
+                        {
+                            Error();
+                        }
+                    else
+                        {
+                            for (int i = 0; i < shipLength; i++)
+                                {
+                                    B1[startX, startY + i] = 'X';
+                                }
+                        }
+                     break;
+                }
+            
+        }
+        
+
+        
     }
-  }
-}   
+}
 
 

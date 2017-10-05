@@ -27,7 +27,6 @@ namespace spil
                         Console.WriteLine(battleships.GetBoardView());
                         break;
                     case "2":
-                        Console.Clear();
                         DeployMenu();
                         Console.WriteLine(battleships.GetBoardView());
                         break;
