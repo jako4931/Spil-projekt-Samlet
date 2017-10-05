@@ -5,6 +5,7 @@ namespace spil
     public class GameMenu
     {
         TicTacToe ticTacToe { get; set; }
+        Battleships battleships { get; set; }
         int turns = 0; //variable til at tælle ture
 
         public void MainMenu()
@@ -44,40 +45,27 @@ namespace spil
 
         public void BattleshipsMenu()
         {
-            Battleships battleships = new Battleships();
-            
-            
             bool running = true;
             do
-            {
-            
+            {   
             Console.WriteLine("Battle Ships Menu \n");
             Console.WriteLine("1. Start new game \n2. Deploy ship. \n0. Exit ");
-                try 
-                {
-
+                 
+                
                 string choice = GetUserChoice();
                 switch (choice)
                 {
                     case "1":
-                        //Battleships battleships = new Battleships();
+                        battleships = new Battleships();
                         Console.WriteLine(battleships.GetBoardView());
                         break;
                     case "2": 
-                        battleships.DeployShip();
+                        DeployMenu();
                         Console.WriteLine(battleships.GetBoardView());
                         break;
-                        
                     case "0": running = false; break;
                     default: ShowMenuSelectionError(); break;
                 }
-                
-                }
-                catch
-                {
-                    ShowMenuSelectionError();
-                }
-
             }while (running);
 
         }
@@ -260,47 +248,39 @@ namespace spil
                 ShowMenuSelectionError();
             }
         }
-        public int SelectShipMenu()
+        public void DeployMenu()
     {
         Console.WriteLine("Selected a ship to deploy\n");
         Console.WriteLine("1. Aircraft carrier \n2. Battleship \n3. Destroyer \n4. Submarine \n5. Rambo");
+        int shipLength = 0;
         string choice = GetUserChoice();
 
         switch (choice)
             {
-                case "1": return 5; 
-                case "2": return 4; 
-                case "3": return 3;
-                case "4": return 3; 
-                case "5": return 2; 
-                default: return 0; break;
-            }
-        
-    }
-        public int ShipLocationX()
-        {
-            Console.WriteLine("Fra hvilket felt skal dit skib gå?\n");
-            Console.WriteLine("Indtast x-værdi: ");
-            int xValue = int.Parse(Console.ReadLine());
-            return xValue;
-        }
-        public int ShipLocationY()
-        {
-            Console.WriteLine("Indtast y-værdi: ");
-            char yValue = Convert.ToChar(Console.ReadLine());
-            return yValue;
-        }
-        public bool Horizontal()
-        {
-            Console.WriteLine("Skal skkibet placeres lodret eller vanret");
-            Console.WriteLine("1. Vandret \n2. Lodret");
-            string choice = GetUserChoice();
+                case "1": shipLength = 5; break;
+                case "2": shipLength = 4; break;
+                case "3": shipLength = 3; break;
+                case "4": shipLength = 3; break;
+                case "5": shipLength = 2; break;
+                default: ShowMenuSelectionError(); break;
+             } 
+        Console.WriteLine("Fra hvilket felt skal dit skib gå?\n");
+        Console.WriteLine("x-værdi: ");
+        int xValue = int.Parse(Console.ReadLine());
+        Console.WriteLine("Indtast y-værdi: ");
+        int yValue = int.Parse(Console.ReadLine());
+ 
+        Console.WriteLine("Skal skkibet placeres lodret eller vanret");
+        Console.WriteLine("1. Vandret \n2. Lodret");
+       bool horizontal = true;
+        choice = GetUserChoice();
             switch (choice)
             {
-                case "1": return true; break;
-                case "2": return false; break;
-                default: return false; break;
+                case "1": horizontal = true; break;
+                case "2": horizontal = false; break;
+                default: ShowMenuSelectionError(); break;
             }
+        battleships.DeployShip(shipLength, xValue, yValue, horizontal);
 
         }
 }

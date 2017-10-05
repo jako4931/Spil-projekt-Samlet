@@ -72,16 +72,28 @@ namespace spil
 
         }
         
-    public void DeployShip()
+    public void DeployShip(int shipLength, int startX, int startY, bool direction)
     {
-        GetBoardView();
-        int shipLength = gameMenu.SelectShipMenu();
-        int startX = gameMenu.ShipLocationX();
-        int startY = gameMenu.ShipLocationY();
-        B1[startX, startY] = 'X';       
-        
+        startX--;
+        startY--;
+        if (direction == false)
+    {
+
+        for (int i = 0; i < shipLength; i++)
+			{
+                B1[startX, startY + i] = 'X';
+			}
+    }
+        else
+        {
+            for (int i = 0; i < shipLength; i++)
+			{
+                 B1[startX + i, startY] = 'X';
+			}
+        }
+			  
     }
   }
-}
+}   
 
 
