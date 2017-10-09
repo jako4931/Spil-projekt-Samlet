@@ -30,6 +30,9 @@ namespace spil
                         DeployMenu();
                         Console.WriteLine(battleships.GetBoardView());
                         break;
+                    case "3":
+                        ShootShipMenu();
+                        break;
                     case "0": running = false; break;
                     default: ShowMenuSelectionError(); break;
                 }
@@ -42,15 +45,16 @@ namespace spil
             Console.WriteLine("Selected a ship to deploy\n");
             Console.WriteLine("1. Aircraft carrier \n2. Battleship \n3. Destroyer \n4. Submarine \n5. Rambo");
             int shipLength = 0;
+            char shipNumber = ' ';
             string choice = GetUserChoice();
 
             switch (choice)
             {
-                case "1": shipLength = 5; break;
-                case "2": shipLength = 4; break;
-                case "3": shipLength = 3; break;
-                case "4": shipLength = 3; break;
-                case "5": shipLength = 2; break;
+                case "1": shipLength = 5; shipNumber = '5'; break;
+                case "2": shipLength = 4; shipNumber = '4'; break;
+                case "3": shipLength = 3; shipNumber = '3'; break;
+                case "4": shipLength = 3; shipNumber = '2'; break;
+                case "5": shipLength = 2; shipNumber = '1'; break;
                 default: ShowMenuSelectionError(); break;
             }
             Console.WriteLine("Fra hvilket felt skal dit skib gå?\n");
@@ -69,11 +73,20 @@ namespace spil
                 case "2": horizontal = false; break;
                 default: ShowMenuSelectionError(); break;
             }
-            battleships.DeployShip(shipLength, xValue, yValue, horizontal);
+            battleships.DeployShip(battleships.B1, shipLength, xValue, yValue, horizontal, shipNumber);
             Console.Clear();
 
         }
+        public void ShootShipMenu()
+        {
+            Console.WriteLine("Hvilket felt vil du skyde? \n"); ;
+            Console.WriteLine("x-værdi: ");
+            int xValue = int.Parse(Console.ReadLine());
+            Console.WriteLine("Indtast y-værdi: ");
+            int yValue = int.Parse(Console.ReadLine());
 
+            battleships.Shoot(battleships.B1, xValue, yValue);
+        }
 
     }
 }

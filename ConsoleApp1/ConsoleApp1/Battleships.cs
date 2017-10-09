@@ -78,17 +78,17 @@ namespace spil
             Console.ReadKey();
         }
 
-        public void DeployShip(int shipLength, int startX, int startY, bool direction)
+        public void DeployShip(char[,] board, int shipLength, int startX, int startY, bool horizontal, char shipNumber)
         {
             startX--;
             startY--;
             bool fieldsOccupied = false;
-            switch (direction)
+            switch (horizontal)
             {
                 case true: // vandret tjek og placering
                     for (int i = 0; i < shipLength; i++)
                         {
-                            if (Char.IsLetter(B1[startX + i, startY]))
+                            if (Char.IsDigit(board[startX + i, startY]))
                             {
                                 fieldsOccupied = true;
                             }
@@ -103,14 +103,14 @@ namespace spil
                          {
                             for (int i = 0; i < shipLength; i++)
                                 {
-                                    B1[startX + i, startY] = 'X';
+                                    board[startX + i, startY] = shipNumber;
                                 }
                          }
                     break;
                 case false: //lodret tjek og placering
                     for (int i = 0; i < shipLength; i++)
                         {
-                            if (Char.IsLetter(B1[startX, startY + i]))
+                            if (Char.IsDigit(board[startX, startY + i]))
                                 {
                                     fieldsOccupied = true;
                                 }
@@ -124,12 +124,52 @@ namespace spil
                         {
                             for (int i = 0; i < shipLength; i++)
                                 {
-                                    B1[startX, startY + i] = 'X';
+                                    board[startX, startY + i] = shipNumber;
                                 }
                         }
                      break;
                 }
             
+        }
+        public char savedChar = ' ';
+        public string Shoot(char[,] board, int xValue, int yValue)
+        {
+            xValue--;
+            yValue--;
+            savedChar = ' ';
+            string melding = "";
+            if (Char.IsDigit(board[xValue, yValue]))
+            {
+                savedChar = board[xValue, yValue];
+                board[xValue, yValue] = 'X';
+                melding = "Ramt!";
+              
+            }
+            else if (Char.IsWhiteSpace(board[xValue, yValue]))
+            {
+                board[xValue, yValue] = 'O';
+                melding = "Plask!";
+            }
+            return melding;
+        }
+
+        public bool ShipIsBombed(char[,] board)
+        {
+            bool result = true;
+
+             
+            foreach (char field in board)
+            {
+                if (field == savedChar)
+                {
+                    result = false;
+                }
+                else { }
+            }
+            
+            return result;
+            
+
         }
         
 
