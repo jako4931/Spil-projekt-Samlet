@@ -40,6 +40,7 @@ namespace spil
                                             {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
                                             {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '} };
         }
+
         public string GetBoardView()
         {
             string resultat = "";
@@ -77,6 +78,7 @@ namespace spil
             Console.WriteLine("Nix!");
             Console.ReadKey();
         }
+
 
         public void DeployShip(char[,] board, int shipLength, int startX, int startY, bool horizontal, char shipNumber)
         {
@@ -140,6 +142,7 @@ namespace spil
             string melding = "";
             if (Char.IsDigit(board[xValue, yValue]))
             {
+                
                 savedChar = board[xValue, yValue];
                 board[xValue, yValue] = 'X';
                 melding = "Ramt!";
@@ -147,6 +150,7 @@ namespace spil
             }
             else if (Char.IsWhiteSpace(board[xValue, yValue]))
             {
+                
                 board[xValue, yValue] = 'O';
                 melding = "Plask!";
             }

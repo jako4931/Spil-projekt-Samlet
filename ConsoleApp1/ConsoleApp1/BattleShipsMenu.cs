@@ -17,7 +17,7 @@ namespace spil
             {
 
                 Console.WriteLine("Battle Ships Menu \n");
-                Console.WriteLine("1. Start new game \n2. Deploy ship. \n0. Exit ");
+                Console.WriteLine("1. Start new game \n2. Deploy ship.\n3. Shoot Away \n0. Exit ");
                 string choice = GetUserChoice();
                 switch (choice)
                 {
@@ -31,7 +31,7 @@ namespace spil
                         Console.WriteLine(battleships.GetBoardView());
                         break;
                     case "3":
-                        ShootShipMenu();
+                        ShootBattleShipsMenu();
                         break;
                     case "0": running = false; break;
                     default: ShowMenuSelectionError(); break;
@@ -85,7 +85,38 @@ namespace spil
             Console.WriteLine("Indtast y-værdi: ");
             int yValue = int.Parse(Console.ReadLine());
 
-            battleships.Shoot(battleships.B1, xValue, yValue);
+            Console.WriteLine(battleships.Shoot(battleships.B1, xValue, yValue));
+            Console.ReadKey();
+            Console.Clear();
+        }
+
+
+        public void ShootBattleShipsMenu()
+        {
+            bool running = true;
+            do
+            {
+                
+                Console.WriteLine("Battle Ships Menu \n");
+                Console.WriteLine("1. Start new game \n2. Affyr Skud\n0. Exit ");
+                string choice = GetUserChoice();
+                switch (choice)
+                {
+                    case "1":
+                        Console.Clear();
+                        battleships = new Battleships();
+                        Console.WriteLine(battleships.GetBoardView());
+                        break;
+                    case "2":
+                        ShootShipMenu();
+                        Console.WriteLine(battleships.GetBoardView());
+                        break;
+                    case "0": running = false; break;
+                    default: ShowMenuSelectionError(); break;
+                }
+
+            } while (running);
+
         }
 
     }
