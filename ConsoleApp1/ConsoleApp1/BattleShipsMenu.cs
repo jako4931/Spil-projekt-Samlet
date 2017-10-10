@@ -73,7 +73,7 @@ namespace spil
                 case "2": horizontal = false; break;
                 default: ShowMenuSelectionError(); break;
             }
-            battleships.DeployShip(battleships.B1, shipLength, xValue, yValue, horizontal, shipNumber);
+            battleships.DeployShip(battleships.board, shipLength, xValue, yValue, horizontal, shipNumber);
             Console.Clear();
 
         }
@@ -85,7 +85,7 @@ namespace spil
             Console.WriteLine("Indtast y-værdi: ");
             int yValue = int.Parse(Console.ReadLine());
 
-            Console.WriteLine(battleships.Shoot(battleships.B1, xValue, yValue));
+            Console.WriteLine(battleships.Shoot(battleships.board, xValue, yValue));
             Console.ReadKey();
             Console.Clear();
         }

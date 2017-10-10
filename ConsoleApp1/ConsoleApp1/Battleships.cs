@@ -40,7 +40,8 @@ namespace spil
                                             {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
                                             {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '} };
         }
-
+        public int turns = 0;
+        public char[,] board;
         public string GetBoardView()
         {
             string resultat = "";
@@ -72,16 +73,33 @@ namespace spil
             return resultat;
 
         }
+        public void skifttur()
+        {
+            if (turns <= 4)
+            {
+                board = B1;
+                turns++;
+            }
+            else if(turns <= 9)
+            {
+                board = B2;
+                turns++;
+            }
+
+            
+        }
         public void Error()
         {
             Console.Clear();
             Console.WriteLine("Nix!");
             Console.ReadKey();
+            turns--;
         }
 
 
         public void DeployShip(char[,] board, int shipLength, int startX, int startY, bool horizontal, char shipNumber)
         {
+            skifttur();
             startX--;
             startY--;
             bool fieldsOccupied = false;
