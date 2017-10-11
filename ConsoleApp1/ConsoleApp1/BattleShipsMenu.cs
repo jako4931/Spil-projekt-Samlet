@@ -15,7 +15,6 @@ namespace spil
             bool running = true;
             do
             {
-
                 Console.WriteLine("Battle Ships Menu \n");
                 Console.WriteLine("1. Start new game \n2. Deploy ship.\n3. Shoot Away \n0. Exit ");
                 string choice = GetUserChoice();
@@ -25,10 +24,12 @@ namespace spil
                         Console.Clear();
                         battleships = new Battleships();
                         Console.WriteLine(battleships.GetBoardView());
+                        battleships.Skifttur();
                         break;
                     case "2":
                         DeployMenu();
                         Console.WriteLine(battleships.GetBoardView());
+                        battleships.Skifttur();
                         break;
                     case "3":
                         ShootBattleShipsMenu();
@@ -73,7 +74,7 @@ namespace spil
                 case "2": horizontal = false; break;
                 default: ShowMenuSelectionError(); break;
             }
-            battleships.DeployShip(battleships.board, shipLength, xValue, yValue, horizontal, shipNumber);
+            battleships.DeployShip(shipLength, xValue, yValue, horizontal, shipNumber);
             Console.Clear();
 
         }
