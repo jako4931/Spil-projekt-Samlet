@@ -23,11 +23,13 @@ namespace spil
                     case "1":
                         Console.Clear();
                         battleships = new Battleships();
+                        battleships.Skifttur();
                         Console.WriteLine(battleships.GetBoardView(battleships.board, battleships.board2));
                         battleships.Skifttur();
                         break;
                     case "2":
                         DeployMenu();
+                        battleships.Skifttur();
                         Console.WriteLine(battleships.GetBoardView(battleships.board, battleships.board2));
                         battleships.Skifttur();
                         break;
