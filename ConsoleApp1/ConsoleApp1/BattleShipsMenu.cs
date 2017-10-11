@@ -23,13 +23,15 @@ namespace spil
                     case "1":
                         Console.Clear();
                         battleships = new Battleships();
-                        Console.WriteLine(battleships.GetBoardView());
                         battleships.Skifttur();
+                        Console.WriteLine(battleships.GetBoardView(battleships.board, battleships.board2));
+                       
                         break;
                     case "2":
                         DeployMenu();
-                        Console.WriteLine(battleships.GetBoardView());
                         battleships.Skifttur();
+                        Console.WriteLine(battleships.GetBoardView(battleships.board, battleships.board2));
+                        
                         break;
                     case "3":
                         ShootBattleShipsMenu();
@@ -44,18 +46,18 @@ namespace spil
         public void DeployMenu()
         {
             Console.WriteLine("Selected a ship to deploy\n");
-            Console.WriteLine("1. Aircraft carrier \n2. Battleship \n3. Destroyer \n4. Submarine \n5. Rambo");
+            Console.WriteLine("1. Rambo \n2. Submarine\n3. Destroyer\n4. Battleship\n5. Aircraft Carrier");
             int shipLength = 0;
             char shipNumber = ' ';
             string choice = GetUserChoice();
 
             switch (choice)
             {
-                case "1": shipLength = 5; shipNumber = '5'; break;
-                case "2": shipLength = 4; shipNumber = '4'; break;
+                case "1": shipLength = 2; shipNumber = '1'; break;
+                case "2": shipLength = 3; shipNumber = '2'; break;
                 case "3": shipLength = 3; shipNumber = '3'; break;
-                case "4": shipLength = 3; shipNumber = '2'; break;
-                case "5": shipLength = 2; shipNumber = '1'; break;
+                case "4": shipLength = 4; shipNumber = '4'; break;
+                case "5": shipLength = 5; shipNumber = '5'; break;
                 default: ShowMenuSelectionError(); break;
             }
             Console.WriteLine("Fra hvilket felt skal dit skib gå?\n");
@@ -106,11 +108,11 @@ namespace spil
                     case "1":
                         Console.Clear();
                         battleships = new Battleships();
-                        Console.WriteLine(battleships.GetBoardView());
+                        Console.WriteLine(battleships.GetBoardView(battleships.board, battleships.board2));
                         break;
                     case "2":
                         ShootShipMenu();
-                        Console.WriteLine(battleships.GetBoardView());
+                        Console.WriteLine(battleships.GetBoardView(battleships.board, battleships.board2));
                         break;
                     case "0": running = false; break;
                     default: ShowMenuSelectionError(); break;
