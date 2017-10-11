@@ -81,16 +81,16 @@ namespace spil
                 board = B1;
                 turns++;
             }
-            else if(turns <= 9)
+            else if(turns <= 10)
             {
                 board = B2;
                 turns++;
             }
-            if (turns > 9 && turns % 2 == 0)
+            if (turns > 10 && turns % 2 == 0)
             {
                 board = B1;
             }
-            else if (turns > 9 && turns % 2 == 1)
+            else if (turns > 10 && turns % 2 == 1)
             {
                 board = B2;
             }
@@ -180,6 +180,10 @@ namespace spil
                 
                 board[xValue, yValue] = 'O';
                 melding = "Plask!";
+            }
+            else if (char.IsLetter(board[xValue, yValue]))
+            {
+                melding = "Den har du ramt tidligere";
             }
             return melding;
         }
