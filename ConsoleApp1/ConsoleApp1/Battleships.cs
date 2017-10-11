@@ -44,6 +44,7 @@ namespace spil
         public char[,] board;
         public string GetBoardView()
         {
+            Skifttur();
             string resultat = "";
             //
             resultat = resultat + "  -----------------------------------------" + "   |   -----------------------------------------\n";
@@ -73,7 +74,7 @@ namespace spil
             return resultat;
 
         }
-        public void skifttur()
+        public void Skifttur()
         {
             if (turns <= 4)
             {
@@ -85,6 +86,15 @@ namespace spil
                 board = B2;
                 turns++;
             }
+            if (turns > 9 && turns % 2 == 0)
+            {
+                board = B1;
+            }
+            else if (turns > 9 && turns % 2 == 1)
+            {
+                board = B2;
+            }
+            
 
             
         }
@@ -99,7 +109,6 @@ namespace spil
 
         public void DeployShip(char[,] board, int shipLength, int startX, int startY, bool horizontal, char shipNumber)
         {
-            skifttur();
             startX--;
             startY--;
             bool fieldsOccupied = false;
