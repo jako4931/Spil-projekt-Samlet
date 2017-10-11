@@ -114,31 +114,19 @@ namespace spil
             Assert.AreEqual(battleShips.B1, battleShips.board);
 
             //Third deployment
-            shipLength = 4;
-            shipNumber = '4';
-            startx = 1;
-            starty = 3;
-            horizontal = true;
+            shipLength = 4;shipNumber = '4';startx = 1;starty = 3;horizontal = true;
             battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
             battleShips.Skifttur();
             Assert.AreEqual(battleShips.B1, battleShips.board);
 
             //Fourth deployment
-            shipLength = 5;
-            shipNumber = '5';
-            startx = 1;
-            starty = 4;
-            horizontal = true;
+            shipLength = 5;shipNumber = '5';startx = 1;starty = 4;horizontal = true;
             battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
             battleShips.Skifttur();
             Assert.AreEqual(battleShips.B1, battleShips.board);
 
             //Fifth deployment
-            shipLength = 3;
-            shipNumber = '3';
-            startx = 1;
-            starty = 5;
-            horizontal = true;
+            shipLength = 3;shipNumber = '3';startx = 1; starty = 5;horizontal = true;
             battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
             battleShips.Skifttur();
             Assert.AreEqual(battleShips.B2, battleShips.board);
@@ -152,6 +140,121 @@ namespace spil
             battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
             battleShips.Skifttur();
             Assert.AreEqual(battleShips.B2, battleShips.board);
+        }
+        [TestMethod]
+        public void SwitchBetweenPlayersAfterShipDeployment()
+        {
+            battleShips.Skifttur();
+            //First deployment
+            int shipLength = 1;
+            char shipNumber = '2';
+            int startx = 1;
+            int starty = 1;
+            bool horizontal = true;
+            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
+            battleShips.Skifttur();
+            Assert.AreEqual(battleShips.B1, battleShips.board);
+
+            //Second deployment
+            shipLength = 2;
+            shipNumber = '1';
+            startx = 1;
+            starty = 2;
+            horizontal = true;
+            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
+            battleShips.Skifttur();
+            Assert.AreEqual(battleShips.B1, battleShips.board);
+
+            //Third deployment
+            shipLength = 4; shipNumber = '4'; startx = 1; starty = 3; horizontal = true;
+            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
+            battleShips.Skifttur();
+            Assert.AreEqual(battleShips.B1, battleShips.board);
+
+            //Fourth deployment
+            shipLength = 5; shipNumber = '5'; startx = 1; starty = 4; horizontal = true;
+            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
+            battleShips.Skifttur();
+            Assert.AreEqual(battleShips.B1, battleShips.board);
+
+            //Fifth deployment
+            shipLength = 3; shipNumber = '3'; startx = 1; starty = 5; horizontal = true;
+            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
+            battleShips.Skifttur();
+            Assert.AreEqual(battleShips.B2, battleShips.board);
+
+            shipLength = 3;
+            shipNumber = '3';
+            startx = 1;
+            starty = 1;
+            horizontal = true;
+            //Sixth deployment
+            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
+            battleShips.Skifttur();
+            Assert.AreEqual(battleShips.B2, battleShips.board);
+
+            shipLength = 4;
+            shipNumber = '3';
+            startx = 1;
+            starty = 2;
+            horizontal = true;
+            //Seventh deployment
+            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
+            battleShips.Skifttur();
+            Assert.AreEqual(battleShips.B2, battleShips.board);
+
+            shipLength = 3;
+            shipNumber = '3';
+            startx = 1;
+            starty = 3;
+            horizontal = true;
+            // 8th Deployment
+            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
+            battleShips.Skifttur();
+            Assert.AreEqual(battleShips.B2, battleShips.board);
+
+            shipLength = 3;
+            shipNumber = '3';
+            startx = 1;
+            starty = 4;
+            horizontal = true;
+            // 9th deployment
+            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
+            battleShips.Skifttur();
+            Assert.AreEqual(battleShips.B2, battleShips.board);
+
+            shipLength = 3;
+            shipNumber = '3';
+            startx = 1;
+            starty = 5;
+            horizontal = true;
+            //10th deployment
+            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
+            battleShips.Skifttur();
+            Assert.AreEqual(battleShips.B1, battleShips.board);
+
+            ////Nu skal den skifte efter hver tur.
+
+            shipLength = 3;
+            shipNumber = '3';
+            startx = 1;
+            starty = 8;
+            horizontal = true;
+            //11th deployment
+            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
+            battleShips.Skifttur();
+            Assert.AreEqual(battleShips.B2, battleShips.board);
+
+
+            shipLength = 3;
+            shipNumber = '3';
+            startx = 1;
+            starty = 7;
+            horizontal = true;
+            //11th deployment
+            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
+            battleShips.Skifttur();
+            Assert.AreEqual(battleShips.B1, battleShips.board);
         }
     }
 
