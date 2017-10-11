@@ -23,12 +23,12 @@ namespace spil
                     case "1":
                         Console.Clear();
                         battleships = new Battleships();
-                        Console.WriteLine(battleships.GetBoardView());
+                        Console.WriteLine(battleships.GetBoardView(battleships.board, battleships.board2));
                         battleships.Skifttur();
                         break;
                     case "2":
                         DeployMenu();
-                        Console.WriteLine(battleships.GetBoardView());
+                        Console.WriteLine(battleships.GetBoardView(battleships.board, battleships.board2));
                         battleships.Skifttur();
                         break;
                     case "3":
@@ -106,11 +106,11 @@ namespace spil
                     case "1":
                         Console.Clear();
                         battleships = new Battleships();
-                        Console.WriteLine(battleships.GetBoardView());
+                        Console.WriteLine(battleships.GetBoardView(battleships.board, battleships.board2));
                         break;
                     case "2":
                         ShootShipMenu();
-                        Console.WriteLine(battleships.GetBoardView());
+                        Console.WriteLine(battleships.GetBoardView(battleships.board, battleships.board2));
                         break;
                     case "0": running = false; break;
                     default: ShowMenuSelectionError(); break;
