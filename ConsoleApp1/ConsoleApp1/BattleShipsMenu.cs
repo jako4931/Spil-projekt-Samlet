@@ -23,15 +23,13 @@ namespace spil
                     case "1":
                         Console.Clear();
                         battleships = new Battleships();
+                        Console.WriteLine(battleships.GetBoardView());
                         battleships.Skifttur();
-                        Console.WriteLine(battleships.GetBoardView(battleships.board, battleships.board2));
-                       
                         break;
                     case "2":
                         DeployMenu();
+                        Console.WriteLine(battleships.GetBoardView());
                         battleships.Skifttur();
-                        Console.WriteLine(battleships.GetBoardView(battleships.board, battleships.board2));
-                        
                         break;
                     case "3":
                         ShootBattleShipsMenu();
@@ -46,7 +44,7 @@ namespace spil
         public void DeployMenu()
         {
             Console.WriteLine("Selected a ship to deploy\n");
-            Console.WriteLine("1. Rambo \n2. Submarine\n3. Destroyer\n4. Battleship\n5. Aircraft Carrier");
+            Console.WriteLine("5. Aircraft carrier \n4. Battleship \n3. Destroyer \n2. Submarine \n1. Rambo");
             int shipLength = 0;
             char shipNumber = ' ';
             string choice = GetUserChoice();
@@ -108,11 +106,11 @@ namespace spil
                     case "1":
                         Console.Clear();
                         battleships = new Battleships();
-                        Console.WriteLine(battleships.GetBoardView(battleships.board, battleships.board2));
+                        Console.WriteLine(battleships.GetBoardView());
                         break;
                     case "2":
                         ShootShipMenu();
-                        Console.WriteLine(battleships.GetBoardView(battleships.board, battleships.board2));
+                        Console.WriteLine(battleships.GetBoardView());
                         break;
                     case "0": running = false; break;
                     default: ShowMenuSelectionError(); break;
