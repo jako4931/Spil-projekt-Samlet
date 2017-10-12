@@ -77,24 +77,23 @@ namespace spil
             Assert.AreEqual(false, battleShips.ShipIsBombed());
         }
 
-        [TestMethod]
-        public void CanDetectHit()
-        {
-            battleShips.turns = 10;
+        //[TestMethod]
+        //public void CanDetectHit()
+        //{
+        //    battleShips.turns = 10;
 
-            battleShips.Skifttur();
+        //    battleShips.Skifttur();
 
-            int shipLength = 3;
-            char shipNumber = '2';
-            int startx = 5;
-            int starty = 5;
-            bool horizontal = false;
-            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
+        //    int shipLength = 3;
+        //    char shipNumber = '2';
+        //    int startx = 5;
+        //    int starty = 5;
+        //    bool horizontal = false;
+        //    battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
 
-            battleShips.Skifttur();
+        //    battleShips.Skifttur();
 
-            Assert.AreEqual("Ramt!", battleShips.Shoot(5, 5));
-        }
+       //}
         [TestMethod]
         public void CanSwitchTurnAfterDeployingFiveShips()
         {
