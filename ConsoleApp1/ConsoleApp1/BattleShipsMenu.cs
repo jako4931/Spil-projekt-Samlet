@@ -10,13 +10,14 @@ namespace spil
     class BattleShipsMenu : GameMenu
     {
         Battleships battleships { get; set; }
+        public int Turns = 0;
         public void BattleshipsMenu()
         {
             bool running = true;
             do
             {
                 Console.WriteLine("Battle Ships Menu \n");
-                Console.WriteLine("1. Start new game \n2. Deploy ship.\n3. Shoot Away \n0. Exit ");
+                Console.WriteLine("1. Start new game \n2. Deploy ship. \n0. Exit ");
                 string choice = GetUserChoice();
                 switch (choice)
                 {
@@ -31,9 +32,6 @@ namespace spil
                         battleships.Skifttur();
                         Console.WriteLine(battleships.GetBoardView(battleships.board, battleships.board2));
                         break;
-                    case "3":
-                        ShootBattleShipsMenu();
-                        break;
                     case "0": running = false; break;
                     default: ShowMenuSelectionError(); break;
                 }
@@ -44,7 +42,7 @@ namespace spil
         public void DeployMenu()
         {
             Console.WriteLine("Selected a ship to deploy\n");
-            Console.WriteLine("5. Aircraft carrier \n4. Battleship \n3. Destroyer \n2. Submarine \n1. Rambo");
+            Console.WriteLine("1. Rambo \n2. Submarine \n3. Destroyer \n4. Battleship \n5. Aircraft carrier");
             int shipLength = 0;
             char shipNumber = ' ';
             string choice = GetUserChoice();
@@ -76,6 +74,14 @@ namespace spil
             }
             battleships.DeployShip(shipLength, xValue, yValue, horizontal, shipNumber);
             Console.Clear();
+            Turns++;
+            {
+                if (Turns > 9)
+                {
+                    Console.WriteLine(battleships.GetBoardView(battleships.board, battleships.board2));
+                    ShootBattleShipsMenu();
+                }
+            }
 
         }
         public void ShootShipMenu()
@@ -86,7 +92,7 @@ namespace spil
             Console.WriteLine("Indtast y-værdi: ");
             int yValue = int.Parse(Console.ReadLine());
 
-            Console.WriteLine(battleships.Shoot(battleships.board, xValue, yValue));
+            Console.WriteLine(battleships.Shoot(xValue, yValue));
             Console.ReadKey();
             Console.Clear();
         }
@@ -98,7 +104,7 @@ namespace spil
             do
             {
                 
-                Console.WriteLine("Battle Ships Menu \n");
+                Console.WriteLine("Skyde Menu \n");
                 Console.WriteLine("1. Start new game \n2. Affyr Skud\n0. Exit ");
                 string choice = GetUserChoice();
                 switch (choice)
