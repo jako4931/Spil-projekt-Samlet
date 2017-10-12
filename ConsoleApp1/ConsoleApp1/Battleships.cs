@@ -206,7 +206,6 @@ namespace spil
         {
             xValue--;
             yValue--;
-            savedChar = 'p';
             string melding = "";
             if (Char.IsDigit(targetBoard[xValue, yValue]))
             {
@@ -222,6 +221,7 @@ namespace spil
                 
                 board2[xValue, yValue] = 'O';
                 targetBoard[xValue, yValue] = 'O';
+                savedChar = ' ';
                 melding = "Plask!";
             }
             else if (char.IsLetter(board2[xValue, yValue]))
@@ -243,6 +243,21 @@ namespace spil
                 else { }
             }
             return result;
+
+        }
+        public bool shipsExistsOnGameBoard()
+        {
+            bool shipsAlive = false;
+            foreach (char field in targetBoard)
+            {
+                if (char.IsDigit(field))
+                {
+                    shipsAlive = true;
+                }
+                else { }
+                
+            }
+            return shipsAlive;
         }
         
 

@@ -93,6 +93,16 @@ namespace spil
             int yValue = int.Parse(Console.ReadLine());
 
             Console.WriteLine(battleships.Shoot(xValue, yValue));
+            if (battleships.ShipIsBombed() == true)
+            {
+                Console.Clear();
+                Console.WriteLine("Sunket!");
+            } 
+            if (battleships.shipsExistsOnGameBoard() == false)
+            {
+                Console.Clear();
+                Console.WriteLine("Du har vundet");
+            }
             battleships.Skifttur();
             Console.ReadKey();
             Console.Clear();
