@@ -86,7 +86,7 @@ namespace spil
             Console.WriteLine("Indtast y-værdi: ");
             int yValue = int.Parse(Console.ReadLine());
 
-            Console.WriteLine(battleships.Shoot(battleships.board, xValue, yValue));
+            Console.WriteLine(battleships.Shoot(xValue, yValue));
             Console.ReadKey();
             Console.Clear();
         }

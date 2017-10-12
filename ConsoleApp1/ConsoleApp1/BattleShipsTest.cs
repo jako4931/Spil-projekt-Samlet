@@ -40,7 +40,10 @@ namespace spil
         [TestMethod]
         public void DetectIfShipIsBombed()
         {
+            // test setups
+            battleShips.turns = 10;
             battleShips.Skifttur();
+
             int shipLength = 3;
             char shipNumber = '2';
             int startx = 5;
@@ -48,17 +51,19 @@ namespace spil
             bool horizontal = false;
             battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
 
+          battleShips.Skifttur();
             //shooting ship
 
-            battleShips.Shoot(battleShips.board, 5, 5);
-            battleShips.Shoot(battleShips.board, 5, 6);
-            battleShips.Shoot(battleShips.board, 5, 7);
-            Assert.AreEqual(true, battleShips.ShipIsBombed(battleShips.board));
+            battleShips.Shoot(5, 5);
+            battleShips.Shoot(5, 6);
+            battleShips.Shoot(5, 7);
+            Assert.AreEqual(true, battleShips.ShipIsBombed());
         }
 
         [TestMethod]
         public void DetectIfShipIsAlive()
         {
+            battleShips.turns = 10;
             battleShips.Skifttur();
             int shipLength = 3;
             char shipNumber = '2';
@@ -66,16 +71,19 @@ namespace spil
             int starty = 5;
             bool horizontal = false;
             battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
-
+            battleShips.Skifttur();
             battleShips.savedChar = '2';
 
-            Assert.AreEqual(false, battleShips.ShipIsBombed(battleShips.board));
+            Assert.AreEqual(false, battleShips.ShipIsBombed());
         }
 
         [TestMethod]
         public void CanDetectHit()
         {
+            battleShips.turns = 10;
+
             battleShips.Skifttur();
+
             int shipLength = 3;
             char shipNumber = '2';
             int startx = 5;
@@ -83,7 +91,9 @@ namespace spil
             bool horizontal = false;
             battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
 
-            Assert.AreEqual("Ramt!", battleShips.Shoot(battleShips.board, 5, 5));
+            battleShips.Skifttur();
+
+            Assert.AreEqual("Ramt!", battleShips.Shoot(5, 5));
         }
         [TestMethod]
         public void CanSwitchTurnAfterDeployingFiveShips()
@@ -156,6 +166,8 @@ namespace spil
             // Efter turskifte skulle "board" være lig med B1
             Assert.AreEqual(battleShips.B1, battleShips.board);
         }
+
+       
     }
 
 }
