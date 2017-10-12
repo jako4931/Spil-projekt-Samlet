@@ -10,13 +10,14 @@ namespace spil
     class BattleShipsMenu : GameMenu
     {
         Battleships battleships { get; set; }
+        public int Turns = 0;
         public void BattleshipsMenu()
         {
             bool running = true;
             do
             {
                 Console.WriteLine("Battle Ships Menu \n");
-                Console.WriteLine("1. Start new game \n2. Deploy ship.\n3. Shoot Away \n0. Exit ");
+                Console.WriteLine("1. Start new game \n2. Deploy ship. \n0. Exit ");
                 string choice = GetUserChoice();
                 switch (choice)
                 {
@@ -30,9 +31,6 @@ namespace spil
                         DeployMenu();
                         battleships.Skifttur();
                         Console.WriteLine(battleships.GetBoardView(battleships.board, battleships.board2));
-                        break;
-                    case "3":
-                        ShootBattleShipsMenu();
                         break;
                     case "0": running = false; break;
                     default: ShowMenuSelectionError(); break;
@@ -76,6 +74,14 @@ namespace spil
             }
             battleships.DeployShip(shipLength, xValue, yValue, horizontal, shipNumber);
             Console.Clear();
+            Turns++;
+            {
+                if (Turns > 9)
+                {
+                    Console.WriteLine(battleships.GetBoardView(battleships.board, battleships.board2));
+                    ShootBattleShipsMenu();
+                }
+            }
 
         }
         public void ShootShipMenu()
@@ -98,7 +104,7 @@ namespace spil
             do
             {
                 
-                Console.WriteLine("Battle Ships Menu \n");
+                Console.WriteLine("Skyde Menu \n");
                 Console.WriteLine("1. Start new game \n2. Affyr Skud\n0. Exit ");
                 string choice = GetUserChoice();
                 switch (choice)
