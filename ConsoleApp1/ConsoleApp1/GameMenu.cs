@@ -6,11 +6,11 @@ namespace spil
     {
         TicTacToe ticTacToe { get; set; }
 
-        int turns = 0; //variable til at tælle ture
+        int turns = 0; // variable til at tælle ture
 
         public void MainMenu()
         {
-            bool running = true; // køre i et bool while loop så længe at bool er true
+            bool running = true; // køre i et bool while loop så længe at bool er true.
             do
             {
                 try
@@ -22,7 +22,7 @@ namespace spil
                     Console.WriteLine("");
                     Console.WriteLine("0. Exit");
                     string choice = GetUserChoice();
-                    switch (choice) //switch til at køre det valgte spil
+                    switch (choice) // switch til at køre det valgte spil
                     {
                         case "1":
                             MainMenuTicTacToe(); break;
@@ -61,7 +61,7 @@ namespace spil
 
                     Console.WriteLine("0. Exit");
                     string choice = GetUserChoice();
-                    switch (choice) //switch til at køre det valgte spil
+                    switch (choice) // switch til at køre det valgte spil
                     {
                         case "1": ShowStandard(); break;
                         case "2": ShowVariation(); break;
@@ -115,7 +115,7 @@ namespace spil
                     Console.Clear();
                     ShowMenuStandard();
                     string choice = GetUserChoice();
-                    switch (choice) // gør det samme bare med standard spillet
+                    switch (choice) // gør det samme bare med standard spillet.
                     {
                         case "0": running = false; break;
                         case "1": DoActionFor1(); break;
@@ -123,10 +123,10 @@ namespace spil
                         default: ShowMenuSelectionError(); break;
                     }
                     ticTacToe.Validate();
-                    turns++; // hver gang loopet køre en omgang pluses turns med 1
-                    if (turns == 10) // max antal ture er sat til 10
+                    turns++; // hver gang loopet køre en omgang pluses turns med 1.
+                    if (turns == 10) // max antal ture er sat til 10.
 
-                    {// hvis turnes er lig med 10 udskriver den besked Draw
+                    {// hvis turnes er lig med 10 udskriver den besked Draw.
                         Console.Clear();
                         Console.WriteLine("draw");
                         Console.ReadKey();
@@ -145,7 +145,7 @@ namespace spil
             if (ticTacToe != null)
             {
                 Console.WriteLine(ticTacToe.GetGameBoardView());
-            } //udskriver standard menu i consolen
+            } // udskriver standard menu i consolen.
             Console.WriteLine("tic tac toe - standard");
             Console.WriteLine();
             Console.WriteLine("1. Opret nyt spil");
@@ -185,11 +185,11 @@ namespace spil
             Console.ReadKey();
         }
 
-        private void DoActionFor1()//stater et spil
+        private void DoActionFor1()// starter et spil
         {
             ticTacToe = new TicTacToe();
         }
-        private void DoActionFor2()//sætter en brik
+        private void DoActionFor2()// sætter en brik
 
         {
             try

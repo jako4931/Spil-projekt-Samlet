@@ -142,119 +142,22 @@ namespace spil
             Assert.AreEqual(battleShips.board, battleShips.B2);
         }
         [TestMethod]
-        public void SwitchBetweenPlayersAfterShipDeployment()
+        
+        public void SwitchBetweenPlayers()
         {
+            // test setup: Her antager vi, at alle spillere har sat deres skibe og skal til at skyde.
+            battleShips.turns = 9;
+            // skift tur
             battleShips.Skifttur();
-            //First deployment
-            int shipLength = 1;
-            char shipNumber = '2';
-            int startx = 1;
-            int starty = 1;
-            bool horizontal = true;
-            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
+            // B2 starter
+            Assert.AreEqual(battleShips.B2, battleShips.board);
+            
             battleShips.Skifttur();
-            Assert.AreEqual(battleShips.board, battleShips.B1);
+            // Efter turskifte skulle "board" være lig med B1
+            Assert.AreEqual(battleShips.B1, battleShips.board);
 
-            //Second deployment
-            shipLength = 2;
-            shipNumber = '1';
-            startx = 1;
-            starty = 2;
-            horizontal = true;
-            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
-            battleShips.Skifttur();
-            Assert.AreEqual(battleShips.board, battleShips.B1);
+        
 
-            //Third deployment
-            shipLength = 4; shipNumber = '4'; startx = 1; starty = 3; horizontal = true;
-            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
-            battleShips.Skifttur();
-            Assert.AreEqual(battleShips.board, battleShips.B1);
-
-            //Fourth deployment
-            shipLength = 5; shipNumber = '5'; startx = 1; starty = 4; horizontal = true;
-            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
-            battleShips.Skifttur();
-            Assert.AreEqual(battleShips.board, battleShips.B1);
-
-            //Fifth deployment
-            shipLength = 3; shipNumber = '3'; startx = 1; starty = 5; horizontal = true;
-            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
-            battleShips.Skifttur();
-            Assert.AreEqual(battleShips.board, battleShips.B2);
-
-            shipLength = 3;
-            shipNumber = '3';
-            startx = 1;
-            starty = 1;
-            horizontal = true;
-            //Sixth deployment
-            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
-            battleShips.Skifttur();
-            Assert.AreEqual(battleShips.board, battleShips.B2);
-
-            shipLength = 4;
-            shipNumber = '3';
-            startx = 1;
-            starty = 2;
-            horizontal = true;
-            //Seventh deployment
-            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
-            battleShips.Skifttur();
-            Assert.AreEqual(battleShips.board, battleShips.B2);
-
-            shipLength = 3;
-            shipNumber = '3';
-            startx = 1;
-            starty = 3;
-            horizontal = true;
-            // 8th Deployment
-            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
-            battleShips.Skifttur();
-            Assert.AreEqual(battleShips.board, battleShips.B2);
-
-            shipLength = 3;
-            shipNumber = '3';
-            startx = 1;
-            starty = 4;
-            horizontal = true;
-            // 9th deployment
-            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
-            battleShips.Skifttur();
-            Assert.AreEqual(battleShips.board, battleShips.B2);
-
-            shipLength = 3;
-            shipNumber = '3';
-            startx = 1;
-            starty = 5;
-            horizontal = true;
-            //10th deployment
-            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
-            battleShips.Skifttur();
-            Assert.AreEqual(battleShips.board, battleShips.B1);
-
-            ////Nu skal den skifte efter hver tur.
-
-            shipLength = 3;
-            shipNumber = '3';
-            startx = 1;
-            starty = 8;
-            horizontal = true;
-            //11th deployment
-            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
-            battleShips.Skifttur();
-            Assert.AreEqual(battleShips.board, battleShips.B2);
-
-
-            shipLength = 3;
-            shipNumber = '3';
-            startx = 1;
-            starty = 7;
-            horizontal = true;
-            //11th deployment
-            battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
-            battleShips.Skifttur();
-            Assert.AreEqual(battleShips.board, battleShips.B1);
         }
     }
 
