@@ -87,12 +87,13 @@ namespace spil
         public void ShootShipMenu()
         {
             Console.WriteLine("Hvilket felt vil du skyde? \n"); ;
-            Console.WriteLine("x-værdi: ");
+            Console.WriteLine("Indtast x-værdi: ");
             int xValue = int.Parse(Console.ReadLine());
             Console.WriteLine("Indtast y-værdi: ");
             int yValue = int.Parse(Console.ReadLine());
 
             Console.WriteLine(battleships.Shoot(xValue, yValue));
+            battleships.Skifttur();
             Console.ReadKey();
             Console.Clear();
         }
