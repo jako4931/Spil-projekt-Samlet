@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace spil
-
 {
     class BattleShipsMenu : GameMenu
     {
@@ -98,7 +97,7 @@ namespace spil
                 Console.Clear();
                 Console.WriteLine("Sunket!");
             } 
-            if (battleships.shipsExistsOnGameBoard() == false)
+            if (battleships.ShipsExistsOnGameBoard() == false)
             {
                 Console.Clear();
                 Console.WriteLine("Du har vundet");
@@ -134,8 +133,6 @@ namespace spil
                 }
 
             } while (running);
-
         }
-
     }
 }
