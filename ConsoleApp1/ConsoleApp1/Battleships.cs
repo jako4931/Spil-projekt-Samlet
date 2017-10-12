@@ -13,6 +13,8 @@ namespace spil
         public char[,] B2 { get; set; }
         public char[,] B3 { get; set; }
         public char[,] B4 { get; set; }
+        public int player1 = 0;
+        public char currentplayer = 'h';
 
 
 
@@ -101,6 +103,7 @@ namespace spil
             return resultat;
 
         }
+     
         public void Skifttur()
         {
             if (turns <= 4)
@@ -108,14 +111,15 @@ namespace spil
                 board = B1;
                 board2 = B3;
                 targetBoard = B2;
-
+                currentplayer = '1';
                 turns++;
             }
-            else if (turns <= 9)
+            else if(turns <= 9)
             {
                 board = B2;
                 board2 = B4;
                 targetBoard = B1;
+                currentplayer = '2';
                 turns++;
             }
 
@@ -124,6 +128,7 @@ namespace spil
                 board = B1;
                 board2 = B3;
                 targetBoard = B2;
+                currentplayer = '1';
                 turns++;
             }
             else if (turns <= 11)
@@ -131,6 +136,7 @@ namespace spil
                 board = B2;
                 board2 = B4;
                 targetBoard = B1;
+                currentplayer = '2';
                 turns--;
             }
 
@@ -148,94 +154,95 @@ namespace spil
 
         public void DeployShip(int shipLength, int startX, int startY, bool horizontal, char shipNumber)
         {
-
-
+            
+             
             startX--;
             startY--;
             bool fieldsOccupied = false;
-            switch (horizontal)
-            {
-                case true: // vandret tjek og placering
-                    for (int i = 0; i < shipLength; i++)
-                    {
-                        if (Char.IsDigit(board[startX + i, startY]))
-                        {
-                            fieldsOccupied = true;
-                        }
-                        else { }
-
-                    }
-                    if (fieldsOccupied == true)
-                    {
-                        Error();
-                    }
-                    else
-                    {
+                switch (horizontal)
+                {
+                    case true: // vandret tjek og placering
                         for (int i = 0; i < shipLength; i++)
                         {
-                            board[startX + i, startY] = shipNumber;
+                            if (Char.IsDigit(board[startX + i, startY]))
+                            {
+                                fieldsOccupied = true;
+                            }
+                            else { }
+
                         }
-                    }
-                    break;
-                case false: //lodret tjek og placering
-                    for (int i = 0; i < shipLength; i++)
-                    {
-                        if (Char.IsDigit(board[startX, startY + i]))
+                        if (fieldsOccupied == true)
                         {
-                            fieldsOccupied = true;
+                            Error();
                         }
-                        else { }
-                    }
-                    if (fieldsOccupied == true)
-                    {
-                        Error();
-                    }
-                    else
-                    {
+                        else
+                        {
+                            for (int i = 0; i < shipLength; i++)
+                            {
+                                board[startX + i, startY] = shipNumber;
+                            }
+                        }
+                        break;
+                    case false: //lodret tjek og placering
                         for (int i = 0; i < shipLength; i++)
                         {
-                            board[startX, startY + i] = shipNumber;
+                            if (Char.IsDigit(board[startX, startY + i]))
+                            {
+                                fieldsOccupied = true;
+                            }
+                            else { }
                         }
-                    }
-                    break;
+                        if (fieldsOccupied == true)
+                        {
+                            Error();
+                        }
+                        else
+                        {
+                            for (int i = 0; i < shipLength; i++)
+                            {
+                                board[startX, startY + i] = shipNumber;
+                            }
+                        }
+                        break;
+                
+                }
 
-            }
         }
         public char savedChar = ' ';
-        public void Shoot(int xValue, int yValue)
+        public string Shoot(int xValue, int yValue)
         {
             xValue--;
             yValue--;
-            savedChar = ' ';
+            savedChar = 'p';
             string melding = "";
             if (Char.IsDigit(targetBoard[xValue, yValue]))
             {
-
+                
                 savedChar = targetBoard[xValue, yValue];
                 board2[xValue, yValue] = 'X';
                 targetBoard[xValue, yValue] = 'X';
                 melding = "";
                 Console.Clear();
                 Console.WriteLine("Ramt !");
-                Console.WriteLine("Det er næste spillers tur");
-
+                Console.WriteLine("Player " + currentplayer + " tur");
+                
 
             }
             else if (Char.IsWhiteSpace(targetBoard[xValue, yValue]))
             {
-
+                
                 board2[xValue, yValue] = 'O';
                 targetBoard[xValue, yValue] = 'O';
-                savedChar = ' ';
                 melding = "";
                 Console.Clear();
                 Console.WriteLine("Plask !");
-                Console.WriteLine("Det er næste spillers tur");
+                Console.WriteLine("Player " + currentplayer + " tur");
             }
             else if (char.IsLetter(board2[xValue, yValue]))
             {
                 melding = "Den har du ramt tidligere";
             }
+            return melding;
         }
 
         public bool ShipIsBombed()
@@ -251,25 +258,10 @@ namespace spil
             }
             return result;
         }
-        public bool shipsExistsOnGameBoard()
-        {
-            bool shipsAlive = false;
-            foreach (char field in targetBoard)
-            {
-                if (char.IsDigit(field))
-                {
-                    shipsAlive = true;
-                }
-                else { }
+        
 
-            }
-            return shipsAlive;
-
-
-
-        }
+        
     }
 }
-
 
 
