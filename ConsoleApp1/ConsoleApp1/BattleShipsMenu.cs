@@ -44,7 +44,7 @@ namespace spil
         public void DeployMenu()
         {
             Console.WriteLine("Selected a ship to deploy\n");
-            Console.WriteLine("5. Aircraft carrier \n4. Battleship \n3. Destroyer \n2. Submarine \n1. Rambo");
+            Console.WriteLine("1. Rambo \n2. Submarine \n3. Destroyer \n4. Battleship \n5. Aircraft carrier");
             int shipLength = 0;
             char shipNumber = ' ';
             string choice = GetUserChoice();
