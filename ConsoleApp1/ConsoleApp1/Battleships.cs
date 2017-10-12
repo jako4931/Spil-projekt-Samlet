@@ -69,6 +69,7 @@ namespace spil
         public int turns = 0;
         public char[,] board;
         public char[,] board2;
+        public char[,] targetBoard;
         public string GetBoardView(char[,] board, char[,] board2)
         {
             string resultat = "";
@@ -106,12 +107,15 @@ namespace spil
             {
                 board = B1;
                 board2 = B3;
+                targetBoard = B2;
+                
                 turns++;
             }
             else if(turns <= 9)
             {
                 board = B2;
                 board2 = B4;
+                targetBoard = B1;
                 turns++;
             }
 
@@ -119,13 +123,14 @@ namespace spil
             {
                 board = B1;
                 board2 = B3;
-                
+                targetBoard = B2;
                 turns++;
             }
             else if (turns <= 11)
             {
                 board = B2;
                 board2 = B4;
+                targetBoard = B1;
                 turns--;
             }
 
@@ -197,37 +202,39 @@ namespace spil
                 }
         }
         public char savedChar = ' ';
-        public string Shoot(char[,] board, int xValue, int yValue)
+        public string Shoot(int xValue, int yValue)
         {
             xValue--;
             yValue--;
-            savedChar = ' ';
+            savedChar = 'p';
             string melding = "";
-            if (Char.IsDigit(board[xValue, yValue]))
+            if (Char.IsDigit(targetBoard[xValue, yValue]))
             {
                 
-                savedChar = board[xValue, yValue];
-                board[xValue, yValue] = 'X';
+                savedChar = targetBoard[xValue, yValue];
+                board2[xValue, yValue] = 'X';
+                targetBoard[xValue, yValue] = 'X';
                 melding = "Ramt!";
               
             }
-            else if (Char.IsWhiteSpace(board[xValue, yValue]))
+            else if (Char.IsWhiteSpace(targetBoard[xValue, yValue]))
             {
                 
-                board[xValue, yValue] = 'O';
+                board2[xValue, yValue] = 'O';
+                targetBoard[xValue, yValue] = 'O';
                 melding = "Plask!";
             }
-            else if (char.IsLetter(board[xValue, yValue]))
+            else if (char.IsLetter(board2[xValue, yValue]))
             {
                 melding = "Den har du ramt tidligere";
             }
             return melding;
         }
 
-        public bool ShipIsBombed(char[,] board)
+        public bool ShipIsBombed()
         {
             bool result = true;
-            foreach (char field in board)
+            foreach (char field in targetBoard)
             {
                 if (field == savedChar)
                 {
