@@ -214,15 +214,22 @@ namespace spil
                 savedChar = targetBoard[xValue, yValue];
                 board2[xValue, yValue] = 'X';
                 targetBoard[xValue, yValue] = 'X';
-                melding = "Ramt!";
-              
+                melding = "";
+                Console.Clear();
+                Console.WriteLine("Ramt !");
+                Console.WriteLine("Det er næste spillers tur");
+                
+
             }
             else if (Char.IsWhiteSpace(targetBoard[xValue, yValue]))
             {
                 
                 board2[xValue, yValue] = 'O';
                 targetBoard[xValue, yValue] = 'O';
-                melding = "Plask!";
+                melding = "";
+                Console.Clear();
+                Console.WriteLine("Plask !");
+                Console.WriteLine("Det er næste spillers tur");
             }
             else if (char.IsLetter(board2[xValue, yValue]))
             {
