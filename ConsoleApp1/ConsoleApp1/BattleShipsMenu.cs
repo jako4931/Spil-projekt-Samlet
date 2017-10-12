@@ -25,13 +25,11 @@ namespace spil
                         battleships = new Battleships();
                         battleships.Skifttur();
                         Console.WriteLine(battleships.GetBoardView(battleships.board, battleships.board2));
-                        battleships.Skifttur();
                         break;
                     case "2":
                         DeployMenu();
                         battleships.Skifttur();
                         Console.WriteLine(battleships.GetBoardView(battleships.board, battleships.board2));
-                        battleships.Skifttur();
                         break;
                     case "3":
                         ShootBattleShipsMenu();
@@ -39,7 +37,7 @@ namespace spil
                     case "0": running = false; break;
                     default: ShowMenuSelectionError(); break;
                 }
-
+                
             } while (running);
 
         }

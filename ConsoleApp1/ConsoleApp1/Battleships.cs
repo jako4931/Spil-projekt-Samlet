@@ -227,8 +227,6 @@ namespace spil
         public bool ShipIsBombed(char[,] board)
         {
             bool result = true;
-
-             
             foreach (char field in board)
             {
                 if (field == savedChar)
@@ -237,10 +235,7 @@ namespace spil
                 }
                 else { }
             }
-            
             return result;
-            
-
         }
         
 
