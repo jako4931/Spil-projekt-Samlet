@@ -13,6 +13,8 @@ namespace spil
         public char[,] B2 { get; set; }
         public char[,] B3 { get; set; }
         public char[,] B4 { get; set; }
+        public int player1 = 0;
+        public char currentplayer = 'h';
 
 
 
@@ -101,6 +103,7 @@ namespace spil
             return resultat;
 
         }
+     
         public void Skifttur()
         {
             if (turns <= 4)
@@ -108,7 +111,7 @@ namespace spil
                 board = B1;
                 board2 = B3;
                 targetBoard = B2;
-                
+                currentplayer = '1';
                 turns++;
             }
             else if(turns <= 9)
@@ -116,6 +119,7 @@ namespace spil
                 board = B2;
                 board2 = B4;
                 targetBoard = B1;
+                currentplayer = '2';
                 turns++;
             }
 
@@ -124,6 +128,7 @@ namespace spil
                 board = B1;
                 board2 = B3;
                 targetBoard = B2;
+                currentplayer = '1';
                 turns++;
             }
             else if (turns <= 11)
@@ -131,6 +136,7 @@ namespace spil
                 board = B2;
                 board2 = B4;
                 targetBoard = B1;
+                currentplayer = '2';
                 turns--;
             }
 
@@ -200,6 +206,7 @@ namespace spil
                         break;
                 
                 }
+
         }
         public char savedChar = ' ';
         public string Shoot(int xValue, int yValue)
@@ -217,7 +224,7 @@ namespace spil
                 melding = "";
                 Console.Clear();
                 Console.WriteLine("Ramt !");
-                Console.WriteLine("Det er næste spillers tur");
+                Console.WriteLine("Player " + currentplayer + " tur");
                 
 
             }
@@ -229,7 +236,7 @@ namespace spil
                 melding = "";
                 Console.Clear();
                 Console.WriteLine("Plask !");
-                Console.WriteLine("Det er næste spillers tur");
+                Console.WriteLine("Player " + currentplayer + " tur");
             }
             else if (char.IsLetter(board2[xValue, yValue]))
             {
