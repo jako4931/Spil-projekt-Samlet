@@ -10,7 +10,7 @@ namespace spil
         // Test setup
         Battleships battleShips = new Battleships();
         BattleShipsMenu battleShipsMenu = new BattleShipsMenu();
-        GameMenu gameMenu = new GameMenu();
+        //GameMenu gameMenu = new GameMenu();
 
         [TestMethod]
         public void CanDeployShipOnAllBoards()
@@ -21,6 +21,7 @@ namespace spil
             int startx = 2;
             int starty = 2;
             bool horizontal = true;
+            // board 1
             battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
             for (int i = 0; i < shipLength; i++)
             {
@@ -28,6 +29,7 @@ namespace spil
             }
             battleShips.Skifttur(); battleShips.Skifttur(); battleShips.Skifttur(); battleShips.Skifttur();
             battleShips.Skifttur(); //Skifter tur fem gange for at ændre board.
+            // board 2
             battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
             for (int i = 0; i < shipLength; i++)
             {
@@ -77,23 +79,8 @@ namespace spil
             Assert.AreEqual(false, battleShips.ShipIsBombed());
         }
 
-        //[TestMethod]
-        //public void CanDetectHit()
-        //{
-        //    battleShips.turns = 10;
-
-        //    battleShips.Skifttur();
-
-        //    int shipLength = 3;
-        //    char shipNumber = '2';
-        //    int startx = 5;
-        //    int starty = 5;
-        //    bool horizontal = false;
-        //    battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
-
-        //    battleShips.Skifttur();
-
-       //}
+        
+      
         [TestMethod]
         public void CanSwitchTurnAfterDeployingFiveShips()
         {
@@ -138,7 +125,7 @@ namespace spil
             shipLength = 3;shipNumber = '3';startx = 1; starty = 5;horizontal = true;
             battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
             battleShips.Skifttur();
-         //   Assert.AreEqual(battleShips.board, battleShips.B2);
+            Assert.AreEqual(battleShips.board, battleShips.B2);
 
             shipLength = 3;
             shipNumber = '3';
@@ -148,7 +135,7 @@ namespace spil
             //Sixth deployment
             battleShips.DeployShip(shipLength, startx, starty, horizontal, shipNumber);
             battleShips.Skifttur();
-          //  Assert.AreEqual(battleShips.board, battleShips.B2);
+            Assert.AreEqual(battleShips.board, battleShips.B2);
         }
         [TestMethod]
         

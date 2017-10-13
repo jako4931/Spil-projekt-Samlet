@@ -129,7 +129,7 @@ namespace spil
                         Console.WriteLine(battleships.GetBoardView(battleships.board, battleships.board2));
                         break;
                     case "0": running = false; break;
-                    default: ShowMenuSelectionError(); break;
+                    default: ShowMenuSelectionError(); battleships.Error(); break;
                 }
 
             } while (running);
